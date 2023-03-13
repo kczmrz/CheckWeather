@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/checkweather/static/css/main.83d7483d.css",
+    "main.js": "/checkweather/static/js/main.07055fb4.js",
+    "static/js/787.5debee51.chunk.js": "/checkweather/static/js/787.5debee51.chunk.js",
+    "static/media/Loading_map.jpg": "/checkweather/static/media/Loading_map.4deb8fd66f5cc732dfd7.jpg",
+    "index.html": "/checkweather/index.html",
+    "main.83d7483d.css.map": "/checkweather/static/css/main.83d7483d.css.map",
+    "main.07055fb4.js.map": "/checkweather/static/js/main.07055fb4.js.map",
+    "787.5debee51.chunk.js.map": "/checkweather/static/js/787.5debee51.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83d7483d.css",
+    "static/js/main.07055fb4.js"
+  ]
+}
