@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { OtherCity } from "./other_City";
-import { useState } from "react";
+import OtherCity  from "./other_City";
 
 type Coords = {
     id: number,
@@ -8,9 +6,6 @@ type Coords = {
     Lat: number,
     Lon: number
 }
-
-
-
 type OtherWeather = {
   id: number,
   name: string,
@@ -24,38 +19,13 @@ export default function OtherCitiesSection() {
      {id: 2, name: "London", Lat:	51.50853, Lon:	-0.12574},
      {id: 3, name: "Tokyo", Lat: 35.6895, Lon:	139.69171}
     ]
-    
-    const [othercities, setOthercities] = useState<OtherWeather[]>([])
-     
-   
-
-   
-
-      //* Koncepcja: Zrobic ładowanie każdego obiektu w other_City.tsx, czyli w środku other_city.tsx jest skrypt który ładuje nam wszystko
-
-      
-    
-  
-
-   
-    
-     
-     
-    
-
-   
-
-    return(
+return(
  <div className="relative" id="secondSection"> 
   <h1 className="text-4xl text-white text-center drop-shadow-xl font-Goldman tablet:text-6xl">Other cities:</h1>
-
-    <div className="grid grid-cols-1 place-items-center  tablet:grid-cols-4 tablet:my-3 ">
-     {coordinates.map(({ id }) => <OtherCity key={coordinates[id].name} cityName={coordinates[id].name} Lat={coordinates[id].Lat} Lon={coordinates[id].Lon} />  )}
-    
-    </div>
-    <br/>
-    
-    
-    </div>)
+      <div className="grid grid-cols-1 place-items-center  tablet:grid-cols-4 tablet:my-3 ">
+        {coordinates.map(({ id }) => <OtherCity key={coordinates[id].name} cityName={coordinates[id].name} Lat={coordinates[id].Lat} Lon={coordinates[id].Lon} />  )}
+      </div>
+      <br/>
+   </div>)
 }
 

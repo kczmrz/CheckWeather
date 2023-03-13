@@ -1,12 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import '../src/index.css';
-import Minipanel from './components/minipanel';
-import FindForm from './components/FindForm';
+import { Footer, MainSection, OtherCitiesSection, Minipanel, FindForm } from './components';
 import axios from 'axios';
-import { CurrentWeather, CurrenWeatherData } from './components/type interfaces/weather_interface';
+import { CurrentWeather } from './components/type interfaces/weather_interface';
 import { city_info,  } from './components/type interfaces/city';
-import MainSection from './components/MainSection';
-import OtherCitiesSection from './components/OtherCitiesSect';
 import CreateMap from './components/Map/Map';
 import { MapStats } from './components/Map/Map';
 import Arrow from './components/icons/arrow';
@@ -20,7 +17,7 @@ function App() {
     const [ErrorPanel, setErrorPanel] = useState<boolean>(false);
     const [position, setPosition] = useState<MapStats>({lon: 21.017532  , lat: 52.237049 } );
     
-    useEffect(()=> {
+   useEffect(()=> {
      FindCity(city[0], 0)
     }, [])
    const getWeather = (lat:number, lon:number)=>{
@@ -61,15 +58,8 @@ function App() {
   } catch {
     console.log('error')
   }
+}
 
-  
-   
-
-   
-
-    
-   
-  }
    const handleInputChange = (event: { target: HTMLInputElement }) => {
         
     const  inpt_val   = event.target;
@@ -94,12 +84,7 @@ function App() {
         else {
           setErrorPanel(true);
         }
-        
-       
-        
-       
-        
-      })
+     })
 
      
     }
@@ -110,10 +95,6 @@ function App() {
       
     }
    }
-   
-
-  
-
    const Option = (nmbr: number) =>{
 
     let x = "";
@@ -135,42 +116,36 @@ function App() {
    
    <FindForm btn={() => FindCity(inputvalue, 0)}>
     <>
-   
-    <input className='peer text-2xl border-b-2 border-white w-9/12 bg-transparent text-white tablet:w-4/12' placeholder='Find your city:'  value={inputvalue} onChange={handleInputChange} list="cityname"></input>
-    
+      <input className='peer text-2xl border-b-2 border-white w-9/12 bg-transparent text-white tablet:w-4/12' placeholder='Find your city:'  value={inputvalue} onChange={handleInputChange} list="cityname"></input>
     </>
    </FindForm>
    <div className='h-screen tablet:h-fit'>
-  
     <div className='grid grid-cols-1 place-items-center w-full mx-auto '>
-      
       <select id="Cities" name="Cities"  onChange={handleSelectChange} className='bg-transparent text-white text-1xl tablet:text-2xl'>
-       
-     <option value={0} className='text-black'>{Option(0)}</option> 
-     <option value={1} className='text-black'>{Option(1)}</option> 
-     <option value={2} className='text-black'>{Option(2)}</option>
-     <option value={3} className='text-black'>{Option(3)}</option>
-     <option value={4} className='text-black'>{Option(4)}</option>
-     <option value={5} className='text-black'>{Option(5)}</option>
+       <option value={0} className='text-black'>{Option(0)}</option> 
+       <option value={1} className='text-black'>{Option(1)}</option> 
+       <option value={2} className='text-black'>{Option(2)}</option>
+       <option value={3} className='text-black'>{Option(3)}</option>
+       <option value={4} className='text-black'>{Option(4)}</option>
+       <option value={5} className='text-black'>{Option(5)}</option>
       </select>
-                      
-    </div>
-    
+     </div>
    <MainSection>
     <> 
-   <Minipanel loading={isLoading} error={ErrorPanel}>
+     <Minipanel loading={isLoading} error={ErrorPanel}>
       <>
       <p className='text-4xl text-center text-yellow-200 font-Goldman tablet:text-2xl desktop:text-4xl'>City:</p>
       <p className='text-5xl text-center text-yellow-400 font-Goldman tablet:text-5xl desktop:text-6xl'>{city[0]} </p>
       <p className='text-4xl text-center text-yellow-400 font-Goldman tablet:text-3xl desktop:text-4xl'>{city[1]} </p>
       </>
-    </Minipanel>
-    <Minipanel loading={isLoading} error={ErrorPanel}>
+     </Minipanel>
+
+     <Minipanel loading={isLoading} error={ErrorPanel}>
       <>
       <p className='text-4xl text-center text-yellow-200 font-Goldman tablet:text-2xl desktop:text-4xl'>Temperature:</p><br/>
       <p className='text-7xl text-center text-yellow-400 font-Goldman tablet:text-5xl desktop:text-7xl'>{weather?.current_weather.temperature} °C</p>
       </>
-    </Minipanel>
+     </Minipanel>
 
     <Minipanel loading={isLoading} error={ErrorPanel}>
       <>
@@ -179,33 +154,20 @@ function App() {
       </>
     </Minipanel>
 
-     </>
-   </MainSection>
-   <div className='visible tablet:invisible' >
-    <a href='#secondSection'> 
-    <Arrow/>
-    </a>
-    </div>
-
-    </div>
-
-    <div className='hidden  desktop:flex '> 
-
-    
-    <CreateMap lon={position.lon} lat={position.lat} isLoad={isLoading}/>
-    </div>
-    
-    <br/>
-   <div className="bg-slate-900 bg-opacity-70 h-full  tablet:h-fit"> 
-
-  
-   <div className='w-full py-2 h-2 bg-slate-700'> </div>
-   <OtherCitiesSection/>
-   <div className='w-full h-2 bg-slate-700'> </div>
-  
+   </>
+  </MainSection>
+  <div className='visible tablet:invisible' ><a href='#secondSection'><Arrow/></a></div>
+ </div>
+     <div className='hidden  desktop:flex '> 
+       <CreateMap lon={position.lon} lat={position.lat} isLoad={isLoading}/>
+    </div><br/>
+    <div className="bg-slate-900 bg-opacity-70 h-full  tablet:h-fit"> 
+       <div className='w-full py-2 h-2 bg-slate-700'> </div>
+       <OtherCitiesSection/>
+       <div className='w-full h-2 bg-slate-700'> </div>
    </div>
   
-    </>
+</>
   );
 }
 
